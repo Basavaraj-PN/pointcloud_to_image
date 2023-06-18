@@ -44,6 +44,6 @@ Run pointcloud_to_image in `build` directory
 ./pointcloud_to_image
 ```
 
-## Result
+## Result on KITTY dataset
 
 ![alt text](https://github.com/Basavaraj-PN/project-pointcloud-on-image/blob/main/output/000000.png)
