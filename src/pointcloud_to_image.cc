@@ -15,8 +15,10 @@ PointCloudToImage::PointCloudToImage(const Eigen::Matrix<float, 3, 4> &Tr_, cons
 }
 void PointCloudToImage::projectPointCloud(const std::string point_cloud_, const std::string image_path_)
 {
-    // Load the image
+    // Set the paths
     image_path = image_path_;
+    point_cloud = point_cloud_;
+    
     image = cv::imread(image_path);
     imwidth = image.cols;
     imheight = image.rows;
