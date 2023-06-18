@@ -20,8 +20,9 @@ int main()
 
     // save projection
     pointcloudtoimage.saveProjection(configParser.output_path_);
+
     // Display output
     pointcloudtoimage.projectionShow();
-
+    
     return 0;
 }
