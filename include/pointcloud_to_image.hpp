@@ -16,20 +16,22 @@ typedef pcl::PointCloud<PointT> PointCloudT;
 class PointCloudToImage
 {
 public:
-    PointCloudToImage();
-    void projectPointCloud(const std::string &point_cloud, const std::string &image_path,
-                           const Eigen::Matrix<float, 3, 4> &Tr_, const Eigen::Matrix<float, 3, 4> &P0_,
-                           bool write_image, const std::string output_path);
+    PointCloudToImage(const Eigen::Matrix<float, 3, 4> &Tr_, const Eigen::Matrix<float, 3, 4> &P0_,
+                      bool write_image_, const std::string output_path_);
+
+    void projectPointCloud(const std::string &point_cloud, const std::string &image_path);
 
 private:
+    Eigen::Matrix<float, 3, 4> Tr;
+    Eigen::Matrix<float, 3, 4> P0;
+    bool write_image;
+    const std::string output_path;
+
     std::string point_cloud;
     std::string image_path;
     cv::Mat image;
     int imwidth;
     int imheight;
-
-    Eigen::Matrix<float, 3, 4> Tr;
-    Eigen::Matrix<float, 3, 4> P0;
 
     enum class Axis
     {

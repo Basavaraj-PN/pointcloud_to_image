@@ -15,9 +15,8 @@ int main()
     YAMLConfigParser configParser;
     configParser.parseConfig("/home/omnipotent/Desktop/Desktop/pointcloud_to_image/config/config.yaml");
 
-    PointCloudToImage p;
-    p.projectPointCloud(configParser.pointcloud_, configParser.image_, configParser.Tr,
-                        configParser.P0, configParser.write_image_, configParser.output_path_);
+    PointCloudToImage p(configParser.Tr, configParser.P0, configParser.write_image_, configParser.output_path_);
+    p.projectPointCloud(configParser.pointcloud_, configParser.image_);
 
     return 0;
 }

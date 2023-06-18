@@ -9,22 +9,17 @@
 #include <pcl/visualization/pcl_visualizer.h>
 #include <vector>
 
-PointCloudToImage::PointCloudToImage()
+PointCloudToImage::PointCloudToImage(const Eigen::Matrix<float, 3, 4> &Tr_, const Eigen::Matrix<float, 3, 4> &P0_,
+                                     bool write_image_, const std::string output_path_)
+    : Tr(Tr_), P0(P0_), write_image(write_image_), output_path(output_path_)
 {
-    // Constructor implementation...
 }
-void PointCloudToImage::projectPointCloud(const std::string &point_cloud, const std::string &image_path,
-                                          const Eigen::Matrix<float, 3, 4> &Tr_, const Eigen::Matrix<float, 3, 4> &P0_,
-                                          bool write_image, const std::string output_path)
+void PointCloudToImage::projectPointCloud(const std::string &point_cloud, const std::string &image_path)
 {
     // Load the image
     image = cv::imread(image_path);
     imwidth = image.cols;
     imheight = image.rows;
-
-    // Set the transformation matrices
-    Tr = Tr_;
-    P0 = P0_;
 
     // Load the point cloud from PCD file
     PointCloudT::Ptr cloud(new PointCloudT);
