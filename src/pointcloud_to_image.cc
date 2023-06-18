@@ -28,7 +28,6 @@ Eigen::MatrixXi  PointCloudToImage::projectPointCloud(const std::string point_cl
     if (pcl::io::loadPCDFile<PointT>(point_cloud_, *cloud) == -1)
     {
         std::cerr << "Failed to load PCD file." << std::endl;
-        return;
     }
 
     // Filter the point cloud along the X axis
