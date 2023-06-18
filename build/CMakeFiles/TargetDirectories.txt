@@ -1,0 +1,3 @@
+/home/omnipotent/Desktop/Desktop/pointcloud_to_image/build/CMakeFiles/rebuild_cache.dir
+/home/omnipotent/Desktop/Desktop/pointcloud_to_image/build/CMakeFiles/edit_cache.dir
+/home/omnipotent/Desktop/Desktop/pointcloud_to_image/build/CMakeFiles/main.dir
