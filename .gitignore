@@ -1,2 +1,7 @@
-.vscode
+.vscode/
 build/
+settings.json
+Makefile
+Makefile.cmake
+Makefile2
+*.txt
