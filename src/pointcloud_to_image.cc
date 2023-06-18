@@ -9,16 +9,11 @@
 #include <pcl/visualization/pcl_visualizer.h>
 #include <vector>
 
-PointCloudToImage::PointCloudToImage(const std::string& pointCloudPath, const std::string& imagePath)
-    : point_cloud(pointCloudPath), image_path(imagePath)
+PointCloudToImage::PointCloudToImage(const std::string &pointCloudPath, const std::string &imagePath,
+                                     const Eigen::Matrix<float, 3, 4> &Tr_, const Eigen::Matrix<float, 3, 4> &P0_)
+    : point_cloud(pointCloudPath), image_path(imagePath), Tr(Tr_), P0(P0_)
 {
-    Tr << 0.0004276802385584, -0.9999672484945999, -0.008084491683470999, -0.01198459927713,
-        -0.007210626507497, 0.008081198471645, -0.9999413164504, -0.05403984729748,
-        0.9999738645903, 0.000485948581039, -0.007206933692422, -0.2921968648686;
-
-    P0 << 718.856, 0.0, 607.1928, 0.0,
-        0.0, 718.856, 185.2157, 0.0,
-        0.0, 0.0, 1.0, 0.0;
+    // Constructor implementation...
 }
 
 void PointCloudToImage::processPointCloud()
@@ -64,7 +59,7 @@ void PointCloudToImage::processPointCloud()
         {
             int x = pixel_coordinates(0, i);
             int y = pixel_coordinates(1, i);
-            cv::circle(image, cv::Point(x, y), 2, cv::Scalar(0, 0, 255), -1);
+            cv::circle(image, cv::Point(x, y), 1, cv::Scalar(227, 97, 255), -1);
         }
     }
 
@@ -75,22 +70,22 @@ void PointCloudToImage::processPointCloud()
 void PointCloudToImage::filterPointCloud(PointCloudT::Ptr cloud, Axis axis, float threshold)
 {
     PointCloudT::Ptr filteredCloud(new PointCloudT);
-    for (const auto& point : cloud->points)
+    for (const auto &point : cloud->points)
     {
         float coordinate;
         switch (axis)
         {
-            case Axis::X:
-                coordinate = point.x;
-                break;
-            case Axis::Y:
-                coordinate = point.y;
-                break;
-            case Axis::Z:
-                coordinate = point.z;
-                break;
-            default:
-                return; // Invalid axis
+        case Axis::X:
+            coordinate = point.x;
+            break;
+        case Axis::Y:
+            coordinate = point.y;
+            break;
+        case Axis::Z:
+            coordinate = point.z;
+            break;
+        default:
+            return; // Invalid axis
         }
 
         if (coordinate > threshold)
@@ -111,7 +106,7 @@ Eigen::MatrixXf PointCloudToImage::pointCloudToMatrix(const PointCloudT::Ptr clo
     Eigen::MatrixXf matrix(cloud->size(), 4);
     for (std::size_t i = 0; i < cloud->size(); ++i)
     {
-        const auto& point = cloud->points[i];
+        const auto &point = cloud->points[i];
         matrix(i, 0) = point.x;
         matrix(i, 1) = point.y;
         matrix(i, 2) = point.z;
@@ -120,7 +115,7 @@ Eigen::MatrixXf PointCloudToImage::pointCloudToMatrix(const PointCloudT::Ptr clo
     return matrix;
 }
 
-Eigen::MatrixXf PointCloudToImage::filterPointsBehindCamera(const Eigen::MatrixXf& cam_xyz)
+Eigen::MatrixXf PointCloudToImage::filterPointsBehindCamera(const Eigen::MatrixXf &cam_xyz)
 {
     Eigen::MatrixXf filtered_cam_xyz;
 
