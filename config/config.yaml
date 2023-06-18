@@ -1,8 +1,8 @@
 %YAML 1.0
 
 # common parameters
-pointcloud: "resources/000000.pcd"
-image: "resources/000000.png"
+pointcloud: "/home/omnipotent/Desktop/Desktop/pointcloud_to_image/resources/000000.pcd"
+image: "/home/omnipotent/Desktop/Desktop/pointcloud_to_image/resources/000000.png"
 output_path: "resources/"
 
 extrinsicTranslation:
