@@ -3,7 +3,7 @@
 # common parameters
 pointcloud: "/home/omnipotent/Desktop/Desktop/pointcloud_to_image/resources/000000.pcd"
 image: "/home/omnipotent/Desktop/Desktop/pointcloud_to_image/resources/000000.png"
-output_path: "resources/"
+output_path: "/home/omnipotent/Desktop/Desktop/pointcloud_to_image/output"
 
 extrinsicTranslation:
   rows: 3
@@ -20,5 +20,6 @@ projectionMatrix:
          0.0, 0.0, 1.0, 0.0]
 
 # visualization parameters
-imshow: 1
-pcl_show: 1
+imshow: true
+pcl_show: true
+write_image: true
