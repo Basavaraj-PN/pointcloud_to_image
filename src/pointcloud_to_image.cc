@@ -13,12 +13,12 @@ PointCloudToImage::PointCloudToImage(const Eigen::Matrix<float, 3, 4> &Tr_, cons
     : Tr(Tr_), P0(P0_)
 {
 }
-void PointCloudToImage::projectPointCloud(const std::string point_cloud_, const std::string image_path_)
+Eigen::MatrixXi  PointCloudToImage::projectPointCloud(const std::string point_cloud_, const std::string image_path_)
 {
     // Set the paths
     image_path = image_path_;
     point_cloud = point_cloud_;
-    
+
     image = cv::imread(image_path);
     imwidth = image.cols;
     imheight = image.rows;
@@ -79,6 +79,8 @@ void PointCloudToImage::projectPointCloud(const std::string point_cloud_, const 
             cv::circle(image, cv::Point(x, y), 1, cv::Scalar(227, 97, 255), -1);
         }
     }
+
+    return pixel_coordinates;
 }
 void PointCloudToImage::saveProjection(const std::string path)
 {
