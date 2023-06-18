@@ -21,12 +21,8 @@ int main()
 
     YAMLConfigParser configParser;
     configParser.parseConfig("/home/omnipotent/Desktop/Desktop/pointcloud_to_image/config/config.yaml");
-    configParser.printConfig();
 
-    std::string pointCloudPath = "/home/omnipotent/Desktop/Desktop/VIO-Tutorials/resources/output.pcd";
-    std::string imagePath = "/media/omnipotent/HDD/Dataset/data_odometry_gray/dataset/sequences/00/image_0/000000.png";
-
-    PointCloudToImage p(pointCloudPath, imagePath);
+    PointCloudToImage p(configParser.pointcloud_, configParser.image_, configParser.Tr, configParser.P0);
     p.processPointCloud();
 
     return 0;
