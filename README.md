@@ -16,7 +16,7 @@ Latest dependencies
 
 * `OpenCV`
 * `PCL`
-* `yaml-cp`
+* [`yaml-cpp`](https://github.com/jbeder/yaml-cpp)
 
 ## config
 
