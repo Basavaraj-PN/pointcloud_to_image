@@ -28,21 +28,18 @@ add_definitions(${PCL_DEFINITIONS})
 
 
 # Set source files
-# set(
-#     SOURCES
-#     src/main.cc
-#     include/pointcloud_to_image.cc
-#     include/pointcloud_to_image.hpp
-# )
+set(
+    SOURCES
+    src/main.cc
+    src/pointcloud_to_image.cc
+    src/pointcloud_to_image.hpp
+    src/yaml_parser.hpp
+)
 
 
 # Create executable target
-add_executable(main src/main.cc src/yaml_parser.hpp)
+add_executable(pointcloud_to_image ${SOURCES})
 
-# add_executable(pointcloud_to_image 
-#     src/poiintcloud_to_image.cc
-#     include/pointcloud_to_image.hpp
-# )
 # Link with OpenCV PCL_LIBRARIES Eigen3  libraries
-target_link_libraries(main ${OpenCV_LIBS} Eigen3::Eigen  ${PCL_LIBRARIES} yaml-cpp)
+target_link_libraries(pointcloud_to_image ${OpenCV_LIBS} Eigen3::Eigen  ${PCL_LIBRARIES} yaml-cpp)
 
