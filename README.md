@@ -1,18 +1,14 @@
 # Project PointCloud On Image
 
-### Project Structure
+## Project Structure
 
 * [`config`](./config/) : Contains yaml file
-
 * [`include`](./include/): Contains yaml parser and projection header
-
 * [`output`](./output/) : To store output
-
 * [`resources`](./resources/): Contains example image and pcd file
-
 * [`src`](./src): Implementation and example code.
 
-### Dependencies
+## Dependencies
 
 Latest dependencies
 
@@ -20,7 +16,7 @@ Latest dependencies
 * `PCL`
 * `yaml-cp`
 
-### config
+## config
 
 Change config parameter
 
@@ -28,6 +24,20 @@ Change config parameter
 
 * `projectionMatrix` or `P0` : 3 x 4 projection matrix
 
-### Build instruction
+## Build instruction
 
-### Running Example
+```bash
+git clone https://github.com/Basavaraj-PN/project-pointcloud-on-image.git
+cd project-pointcloud-on-image
+mkdir build && cd build
+cmake -DCMAKE_BUILD_TYPE=Release ..
+make
+```
+
+## Running Example
+
+Run pointcloud_to_image in `build` directory
+
+```bash
+./pointcloud_to_image
+```
