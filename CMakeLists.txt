@@ -26,14 +26,16 @@ include_directories(${PCL_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
+# Set include path
+include_directories(include)
 
 # Set source files
 set(
     SOURCES
     src/main.cc
     src/pointcloud_to_image.cc
-    src/pointcloud_to_image.hpp
-    src/yaml_parser.hpp
+    include/pointcloud_to_image.hpp
+    include/yaml_parser.hpp
 )
 
 
