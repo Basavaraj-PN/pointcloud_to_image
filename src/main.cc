@@ -16,13 +16,13 @@ int main()
     PointCloudToImage pointcloudtoimage(configParser.Tr, configParser.P0);
 
     // project pointcloud on image
-    pointcloudtoimage.projectPointCloud(configParser.pointcloud_, configParser.image_);
+    Eigen::MatrixXi  pixel_coordinates = pointcloudtoimage.projectPointCloud(configParser.pointcloud_, configParser.image_);
 
     // save projection
     pointcloudtoimage.saveProjection(configParser.output_path_);
 
     // Display output
     pointcloudtoimage.projectionShow();
-    
+
     return 0;
 }
