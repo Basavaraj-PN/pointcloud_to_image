@@ -12,7 +12,7 @@ code for projecting a 3D point cloud to a 2D image using the intrinsic parameter
 
 ## Dependencies
 
-Latest dependencies
+Latest version should work
 
 * `OpenCV`
 * `PCL`
