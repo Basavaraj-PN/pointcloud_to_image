@@ -13,7 +13,7 @@ PointCloudToImage::PointCloudToImage(const Eigen::Matrix<float, 3, 4> &Tr_, cons
     : Tr(Tr_), P0(P0_)
 {
 }
-void PointCloudToImage::projectPointCloud(const std::string &point_cloud_, const std::string &image_path_)
+void PointCloudToImage::projectPointCloud(const std::string point_cloud_, const std::string image_path_)
 {
     // Load the image
     image_path = image_path_;
@@ -23,7 +23,7 @@ void PointCloudToImage::projectPointCloud(const std::string &point_cloud_, const
 
     // Load the point cloud from PCD file
     PointCloudT::Ptr cloud(new PointCloudT);
-    if (pcl::io::loadPCDFile<PointT>(point_cloud, *cloud) == -1)
+    if (pcl::io::loadPCDFile<PointT>(point_cloud_, *cloud) == -1)
     {
         std::cerr << "Failed to load PCD file." << std::endl;
         return;

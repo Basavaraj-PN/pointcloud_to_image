@@ -17,7 +17,7 @@ public:
     PointCloudToImage(const Eigen::Matrix<float, 3, 4> &Tr_, const Eigen::Matrix<float, 3, 4> &P0_);
 
     // Method to project point cloud onto the image
-    void projectPointCloud(const std::string &point_cloud_, const std::string &image_path_);
+    void projectPointCloud(const std::string point_cloud_, const std::string image_path_);
 
     // Show projected image
     void projectionShow() const;
