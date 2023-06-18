@@ -1,15 +1,8 @@
-#include <Eigen/Core>
-#include <iostream>
-#include <spdlog/sinks/stdout_sinks.h>
-#include <spdlog/spdlog.h>
-#include <string>
-#include <vector>
-#include <yaml-cpp/yaml.h>
 
 #include "pointcloud_to_image.hpp"
 #include "yaml_parser.hpp"
-#include <Eigen/Core>
-#include <string>
+#include <spdlog/sinks/stdout_sinks.h>
+#include <spdlog/spdlog.h>
 #include <yaml-cpp/yaml.h>
 
 int main()
@@ -22,8 +15,9 @@ int main()
     YAMLConfigParser configParser;
     configParser.parseConfig("/home/omnipotent/Desktop/Desktop/pointcloud_to_image/config/config.yaml");
 
-    PointCloudToImage p(configParser.pointcloud_, configParser.image_, configParser.Tr, configParser.P0);
-    p.processPointCloud();
+    PointCloudToImage p;
+    p.projectPointCloud(configParser.pointcloud_, configParser.image_, configParser.Tr,
+                        configParser.P0, configParser.write_image_, configParser.output_path_);
 
     return 0;
 }
