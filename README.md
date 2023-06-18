@@ -20,7 +20,7 @@ Latest dependencies
 
 ## config
 
-Change config parameter
+Change config parameter accordingly
 
 * `extrinsicTranslation` or `Tr` : 3 x 4 extrinsic camera matrix
 
