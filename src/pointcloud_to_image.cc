@@ -9,14 +9,14 @@
 #include <pcl/visualization/pcl_visualizer.h>
 #include <vector>
 
-PointCloudToImage::PointCloudToImage(const Eigen::Matrix<float, 3, 4> &Tr_, const Eigen::Matrix<float, 3, 4> &P0_,
-                                     bool write_image_, const std::string output_path_)
-    : Tr(Tr_), P0(P0_), write_image(write_image_), output_path(output_path_)
+PointCloudToImage::PointCloudToImage(const Eigen::Matrix<float, 3, 4> &Tr_, const Eigen::Matrix<float, 3, 4> &P0_)
+    : Tr(Tr_), P0(P0_)
 {
 }
-void PointCloudToImage::projectPointCloud(const std::string &point_cloud, const std::string &image_path)
+void PointCloudToImage::projectPointCloud(const std::string &point_cloud_, const std::string &image_path_)
 {
     // Load the image
+    image_path = image_path_;
     image = cv::imread(image_path);
     imwidth = image.cols;
     imheight = image.rows;
@@ -77,19 +77,19 @@ void PointCloudToImage::projectPointCloud(const std::string &point_cloud, const 
             cv::circle(image, cv::Point(x, y), 1, cv::Scalar(227, 97, 255), -1);
         }
     }
-    // Save the image with projected points
-
-    if (write_image)
-    {
-        cv::imwrite(output_path + "/" + getImageName(image_path), image);
-        std::cout << "Saved image with projected points: " << output_path + getImageName(image_path) << std::endl;
-    }
-
+}
+void PointCloudToImage::saveProjection(const std::string path)
+{
+    std::string out_image = path + "/" + getImageName(image_path);
+    cv::imwrite(out_image, image);
+    std::cout << "Projection saved at: " << out_image << std::endl;
+}
+void PointCloudToImage::projectionShow() const
+{
     // Display the image with projected points
     cv::imshow("PointCloud In Image Plane ", image);
     cv::waitKey(0);
 }
-
 std::string PointCloudToImage::getImageName(const std::string &imagePath)
 {
     std::filesystem::path path(imagePath);
