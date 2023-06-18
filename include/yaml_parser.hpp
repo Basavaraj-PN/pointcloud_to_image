@@ -18,9 +18,6 @@ public:
     std::string output_path_;
     Eigen::Matrix<float, 3, 4> Tr;
     Eigen::Matrix<float, 3, 4> P0;
-    bool imshow_;
-    bool pcl_show_;
-    bool write_image_;
 
     void parseConfig(const std::string &filename);
     void printConfig() const;
@@ -37,10 +34,6 @@ void YAMLConfigParser::parseConfig(const std::string &filename)
 
     parseMatrix(config["extrinsicTranslation"]["data"], Tr);
     parseMatrix(config["projectionMatrix"]["data"], P0);
-
-    imshow_ = config["imshow"].as<bool>();
-    pcl_show_ = config["pcl_show"].as<bool>();
-    write_image_ = config["write_image"].as<bool>();
 }
 
 void YAMLConfigParser::printConfig() const
@@ -55,8 +48,6 @@ void YAMLConfigParser::printConfig() const
     std::cout << "projectionMatrix: " << std::endl;
     std::cout << P0 << std::endl;
 
-    std::cout << "imshow: " << imshow_ << std::endl;
-    std::cout << "pcl_show: " << pcl_show_ << std::endl;
 }
 
 void YAMLConfigParser::parseMatrix(const YAML::Node &node, Eigen::Matrix<float, 3, 4> &matrix)
