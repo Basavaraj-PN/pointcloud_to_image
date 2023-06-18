@@ -41,3 +41,7 @@ Run pointcloud_to_image in `build` directory
 ```bash
 ./pointcloud_to_image
 ```
+
+## Result
+
+![alt text](https://github.com/Basavaraj-PN/project-pointcloud-on-image/blob/main/output/000000.png)
