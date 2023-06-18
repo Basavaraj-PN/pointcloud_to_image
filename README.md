@@ -1,5 +1,7 @@
 # Project PointCloud On Image
 
+code for projecting a 3D point cloud to a 2D image using the intrinsic parameters of a camera as well as its extrinsic parameters.
+
 ## Project Structure
 
 * [`config`](./config/) : Contains yaml file
