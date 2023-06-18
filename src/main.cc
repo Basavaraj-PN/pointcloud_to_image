@@ -6,10 +6,12 @@
 #include <vector>
 #include <yaml-cpp/yaml.h>
 
+#include "pointcloud_to_image.hpp"
 #include "yaml_parser.hpp"
 #include <Eigen/Core>
 #include <string>
 #include <yaml-cpp/yaml.h>
+
 int main()
 {
     spdlog::set_pattern("[%H:%M:%S.%e] [%^%l%$] [thread %t] %v");
@@ -21,8 +23,11 @@ int main()
     configParser.parseConfig("/home/omnipotent/Desktop/Desktop/pointcloud_to_image/config/config.yaml");
     configParser.printConfig();
 
-    std::cout << configParser.getP0() << std::endl;
-    std::cout << configParser.getTr() << std::endl;
+    std::string pointCloudPath = "/home/omnipotent/Desktop/Desktop/VIO-Tutorials/resources/output.pcd";
+    std::string imagePath = "/media/omnipotent/HDD/Dataset/data_odometry_gray/dataset/sequences/00/image_0/000000.png";
+
+    PointCloudToImage p(pointCloudPath, imagePath);
+    p.processPointCloud();
 
     return 0;
 }
