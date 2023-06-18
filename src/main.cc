@@ -12,11 +12,16 @@ int main()
     YAMLConfigParser configParser;
     configParser.parseConfig("/home/omnipotent/Desktop/Desktop/pointcloud_to_image/config/config.yaml");
 
-    // Create PointCloudToImage object
-    PointCloudToImage project(configParser.Tr, configParser.P0, configParser.write_image_, configParser.output_path_);
+    // Create PointCloudToImage object with TR and P0
+    PointCloudToImage pointcloudtoimage(configParser.Tr, configParser.P0);
 
     // project pointcloud on image
-    project.projectPointCloud(configParser.pointcloud_, configParser.image_);
+    pointcloudtoimage.projectPointCloud(configParser.pointcloud_, configParser.image_);
+
+    // save projection
+    pointcloudtoimage.saveProjection(configParser.output_path_);
+    // Display output
+    pointcloudtoimage.projectionShow();
 
     return 0;
 }
