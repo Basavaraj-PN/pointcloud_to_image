@@ -50,6 +50,7 @@ Run pointcloud_to_image in `build` directory
 
 ### Block Diagram
 
+```plaintext
               ,----------------------------------------.               
               |Read image, pointcloud and config files |               
               |----------------------------------------|               
@@ -79,3 +80,4 @@ Run pointcloud_to_image in `build` directory
     |Project points on image plane by multiplying intrinsic matrix|    
     |-------------------------------------------------------------|    
     `-------------------------------------------------------------'    
+```
