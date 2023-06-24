@@ -51,23 +51,23 @@ Run pointcloud_to_image in `build` directory
 ### Block Diagram
 
               ,----------------------------------------.               
-              |Read image, point cloud and config files|               
+              |Read image, pointcloud and config files |               
               |----------------------------------------|               
               `----------------------------------------'               
                                    |                                   
                                    |                                   
               ,-----------------------------------------.              
-              |Filter point cloud that are behind camera|              
+              |Filter pointcloud that are behind camera |              
               |-----------------------------------------|              
               `-----------------------------------------'              
                                    |                                   
               ,-----------------------------------------.              
-              |Convert point cloud to homogeneous matrix|              
+              |Convert pointcloud to homogeneous matrix |              
               |-----------------------------------------|              
               `-----------------------------------------'                            
                                    |                                   
     ,----------------------------------------------------------------------.              
-    |Project point cloud to camera coordinate with camera extrinsic matrix |              
+    |Project pointcloud to camera coordinate with camera extrinsic matrix  |              
     |----------------------------------------------------------------------|              
     `----------------------------------------------------------------------'              
                                    |                                                              
