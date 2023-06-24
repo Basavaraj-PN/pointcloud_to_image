@@ -53,8 +53,7 @@ Run pointcloud_to_image in `build` directory
               ,----------------------------------------.               
               |Read image, pointcloud and config files |               
               |----------------------------------------|               
-              `----------------------------------------'               
-                                   |                                   
+              `----------------------------------------'                                                  
                                    |                                   
               ,-----------------------------------------.              
               |Filter pointcloud that are behind camera |              
