@@ -30,7 +30,7 @@ Eigen::MatrixXi  PointCloudToImage::projectPointCloud(const std::string point_cl
         std::cerr << "Failed to load PCD file." << std::endl;
     }
 
-    // Filter the point cloud along the X axis
+    // Filter the point cloud along the X axis, ignore point behind camera
     filterPointCloud(cloud, Axis::X, 0.0);
 
     // Convert point cloud to matrix
@@ -54,7 +54,7 @@ Eigen::MatrixXi  PointCloudToImage::projectPointCloud(const std::string point_cl
     // Convert coordinates to homogeneous form
     Eigen::MatrixXf cam_xyz_homogeneous(cam_xyz_filter.rows() + 1, cam_xyz_filter.cols());
     cam_xyz_homogeneous.block(0, 0, cam_xyz_filter.rows(), cam_xyz_filter.cols()) = cam_xyz_filter;
-    cam_xyz_homogeneous.row(cam_xyz_filter.rows()).setOnes();
+    cam_xyz_homogeneous.row(cam_xyz_filter.rows()).setOnes(); // last row 1 1 1 1 ...
 
     // Perform projection using the projection matrix
     auto projection = P0 * cam_xyz_homogeneous;
@@ -142,7 +142,7 @@ Eigen::MatrixXf PointCloudToImage::pointCloudToMatrix(const PointCloudT::Ptr clo
         matrix(i, 0) = point.x;
         matrix(i, 1) = point.y;
         matrix(i, 2) = point.z;
-        matrix(i, 3) = 1.0f;
+        matrix(i, 3) = 1.0f; //Homogeneous coordinates
     }
     return matrix;
 }

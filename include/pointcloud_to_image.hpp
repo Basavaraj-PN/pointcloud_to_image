@@ -13,7 +13,7 @@ typedef pcl::PointCloud<PointT> PointCloudT;
 class PointCloudToImage
 {
 public:
-    // Constructor
+    // Constructor, camera intrinsic and extrinsic parameter
     PointCloudToImage(const Eigen::Matrix<float, 3, 4> &Tr_, const Eigen::Matrix<float, 3, 4> &P0_);
 
     // Method to project point cloud onto the image
@@ -45,7 +45,7 @@ private:
     // Filter the point cloud based on a given axis and threshold
     void filterPointCloud(PointCloudT::Ptr cloud, Axis axis, float threshold);
 
-    // Convert the point cloud to a matrix representation
+    // Convert the point cloud to a matrix representation Nx4, homogeneous matrix
     Eigen::MatrixXf pointCloudToMatrix(const PointCloudT::Ptr cloud);
 
     // Filter out points behind the camera
